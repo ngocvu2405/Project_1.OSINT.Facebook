@@ -4,7 +4,7 @@ import hust.soict.sec.scoutFacebook.post.PostFeed;
 
 import java.sql.Date;
 import java.util.List;
-
+import java.util.*;
 public class SyncToAirtable {
     public static void sync(List<PostFeed> postFeeds) {
         // Prepare data for Airtable sync

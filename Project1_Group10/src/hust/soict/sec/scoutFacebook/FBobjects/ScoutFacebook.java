@@ -1,4 +1,4 @@
-package hust.soict.sec.scoutFacebook;
+package hust.soict.sec.scoutFacebook.FBobjects;
 
 import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
@@ -18,7 +18,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ScoutFacebook {
-    private static final String ACCESS_TOKEN = "EAAKOcuxF84gBAGmNshgZCF7nVMmgTiA7gNEDPkouTGwuXRmKDOzVmueLxgQCIdR2pZC3UYGkE2zVa1IGhGj9SvGDGWvLUdNX6NgcwyFZChjOIoZB9OKDuhh9ZA7UPAwzKAXyMAhfKEVwVofNNo9ZAGDKlssZBOvdjAwoExZBf6rH3vUzNDVtoHnxgK5EmXr1ZAOF32giHZCYgUb2lRGf98PCbT";
+    private static final String ACCESS_TOKEN = "EAAKOcuxF84gBAJq7jPxAVZCZBfTOyEjrYQdqSO3MmFHZAkQ40FZC76BfTCu0VQUrtCmn8DUizQWXhAAP32ESq5I45vW0PraKDMUVH1guXQqtRUEYkMwoQWoKpK0aHARKBhu55MJzXqgwDkhQOXP1r7hdgYNZCqtunAfC22SEz9DHB9im93QpSbBXvx04AQKdUQ1z2p3NbA8ZCrsk2cmPskLgoQCLGvpFGYK9uPiJKZAztz3IHpbF27IOemyoEms1t0ZD";
     private static final String GROUP_ID = "166181893083621";
 
     private static List<PostFeed> postFeeds = new ArrayList<>();
