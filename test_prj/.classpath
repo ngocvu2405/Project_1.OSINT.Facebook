@@ -10,5 +10,15 @@
 	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/jackson-annotations-2.15.2.jar"/>
 	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/jackson-core-2.15.2.jar"/>
 	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/jackson-databind-2.15.2.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/gson-2.10.1.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/httpclient-4.5.14.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/httpcore-4.4.16.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/httpcore5-5.2.2.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/httpclient5-5.2.1.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/slf4j-api-2.0.7.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/log4j-to-slf4j-2.20.0.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/slf4j-simple-2.0.7.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/poi-ooxml-5.2.3.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/slack-api-client-1.29.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
