@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;ScoutFacebook.java&apos; to &apos;Project1_Group10/src/hust.soict.sec.scoutFacebook.FBobjects&apos;&#x0D;&#x0A;- Original project: &apos;Project1_Group10&apos;&#x0D;&#x0A;- Destination element: &apos;Project1_Group10/src/hust.soict.sec.scoutFacebook.FBobjects&apos;&#x0D;&#x0A;- Original element: &apos;hust.soict.sec.scoutFacebook.ScoutFacebook.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;hust.soict.sec.scoutFacebook.FBobjects" element1="/src&lt;hust.soict.sec.scoutFacebook{ScoutFacebook.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1687318070910" units="1" version="1.0"/>
+</session>
