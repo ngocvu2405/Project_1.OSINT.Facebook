@@ -82,7 +82,7 @@ public class Main{
                 for (Group group : groupPage) 
                 {                		
                 	if (group.getPrivacy() != null) 
-                	{ // check if user is admin of group (since only admin can get group privacy)
+                	{ // check if user is admin of group (since only admin can get group privacy and we cannot check directly)
                 		
 		                // Fetch posts from the group
 		                Connection<Post> posts = fbClient.fetchConnection(group.getId() + "/feed", Post.class);
