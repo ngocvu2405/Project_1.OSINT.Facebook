@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/slf4j-simple-2.0.7.jar"/>
 	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/poi-ooxml-5.2.3.jar"/>
 	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/slack-api-client-1.29.2.jar"/>
+	<classpathentry kind="lib" path="E:/Nam_2/2022.2/ref.PRJ1/assertj-core-3.24.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
