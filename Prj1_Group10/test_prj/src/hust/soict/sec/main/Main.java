@@ -114,7 +114,7 @@ public class Main{
 			                   groupFeeds.add(postFeed);
 			                   
 			                   GroupAdmin userGroup = new GroupAdmin(group.getId(), group.getName(), 
-                				group.getPrivacy(), group.getUpdatedTime(), group.getMemberRequestCount(), groupFeeds);
+                				group.getPrivacy(), group.getDescription(), group.getMemberRequestCount(), groupFeeds);
 			                   groupsAdminList.add(userGroup);
 			                }
 			            }
@@ -123,7 +123,7 @@ public class Main{
                 	
                 	else 
                 	{
-                		Groups userGroup = new Groups(group.getId(), group.getName(), group.getUpdatedTime());
+                		Groups userGroup = new Groups(group.getId(), group.getName(), group.getDescription());
                 		groupsList.add(userGroup);
                 	}
                 } // groups loop
