@@ -11,7 +11,7 @@ public class GroupAdmin extends Groups {
 	private Long member_request_count;
 	private ArrayList<Group_Feeds> groupFeeds = new ArrayList<Group_Feeds>();
 	
-	public GroupAdmin(String Id, String name,String privacy, Date updated_time, Long member_request_count, ArrayList<Group_Feeds> groupFeeds) {
+	public GroupAdmin(String Id, String name,String privacy, String description, Long member_request_count, ArrayList<Group_Feeds> groupFeeds) {
 		super();
 		this.privacy = privacy;
 		this.member_request_count = member_request_count;
