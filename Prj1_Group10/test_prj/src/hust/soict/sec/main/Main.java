@@ -25,7 +25,8 @@ public class Main{
 	static ArrayList<Users> fullUser = new ArrayList<Users>();
     static ArrayList<Group_Feeds> groupFeeds = new ArrayList<Group_Feeds>();
     static ArrayList<Groups> groupsList = new ArrayList<Groups>();
-
+    static ArrayList<Groups> groupsAdminList = new ArrayList<Groups>();
+    
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
@@ -47,12 +48,15 @@ public class Main{
             String jsonUser = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(fullUser);
             String jsonGroupList = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(groupsList);
             String jsonFeed = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(groupFeeds);
-            File userFile = new File("user.json");
-            File groupFile = new File("groupList.json");
-            File feedFile = new File("groupFeed.json");
+            String jsonGroupAdminList = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(groupsAdminList);
+            File userFile = new File("D:\\HUST\\JavaProjects\\Prj1_Group10\\test_prj\\JSONData\\user.json");
+            File groupFile = new File("D:\\HUST\\JavaProjects\\Prj1_Group10\\test_prj\\JSONData\\groupList.json");
+            File feedFile = new File("D:\\HUST\\JavaProjects\\Prj1_Group10\\test_prj\\JSONData\\groupFeed.json");
+            File groupAdminFile = new File("D:\\HUST\\JavaProjects\\Prj1_Group10\\test_prj\\JSONData\\groupAdminList.json");
             mapper.writeValue(userFile, fullUser);
             mapper.writeValue(groupFile, groupsList);
             mapper.writeValue(feedFile, groupFeeds);
+            mapper.writeValue(groupAdminFile, groupsAdminList);
             System.out.println("JSON files have been created successfully.");
         } catch (IOException e) {
             e.printStackTrace();
@@ -111,7 +115,7 @@ public class Main{
 			                   
 			                   GroupAdmin userGroup = new GroupAdmin(group.getId(), group.getName(), 
                 				group.getPrivacy(), group.getUpdatedTime(), group.getMemberRequestCount(), groupFeeds);
-			                   groupsList.add(userGroup);
+			                   groupsAdminList.add(userGroup);
 			                }
 			            }
 			            
