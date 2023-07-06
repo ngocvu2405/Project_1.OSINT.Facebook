@@ -13,7 +13,7 @@ public class RecordGroup extends PostRequest {
 
 	@Override
 	public String reformatData() {
-		Group userGr = new Group("me?fields=groups%7Bid%2Cname%2Cdescription%2Cadministrator%7D");
+		Group userGr = new Group("me?fields", "groups%7Bid%2Cname%2Cdescription%2Cadministrator%7D");
 		String objectId = userGr.objectId;
         String listAttribute = userGr.listAttribute;
         
@@ -24,31 +24,31 @@ public class RecordGroup extends PostRequest {
 		try {
 			String res = GetData.getData(objectId,listAttribute,accessToken);
 			System.out.println(res);
-
-			JSONObject jsonObject = new JSONObject(res);
+        	JSONObject jsonObject = new JSONObject(res);
 	        JSONArray jsonArray = jsonObject.getJSONObject("groups").getJSONArray("data");
-	        JSONArray recordsArray = new JSONArray();
 
-	        for (int i = 0; i < jsonArray.length(); i++) {
-	            JSONObject fieldsObject = new JSONObject();
-	            JSONObject dataObject = jsonArray.getJSONObject(i);
-	            fieldsObject.put("id", dataObject.getString("id"));
-	            fieldsObject.put("name", dataObject.getString("name"));
-	            fieldsObject.put("administrator", dataObject.getBoolean("administrator"));
-	            if (dataObject.has("description")) {
-	                fieldsObject.put("description", dataObject.getString("description"));
-	            }
-	            JSONObject recordObject = new JSONObject();
-	            recordObject.put("fields", fieldsObject);
-	            recordsArray.put(recordObject);
-	        }
+		        for (int i = 0; i < jsonArray.length(); i++) {
 
-	        JSONObject outputObject = new JSONObject();
-	        outputObject.put("records", recordsArray);
-	        String resData = outputObject.toString();
-	        System.out.println(resData);
+			        JSONArray recordsArray = new JSONArray();
+		            JSONObject fieldsObject = new JSONObject();
+		            JSONObject dataObject = jsonArray.getJSONObject(i);
+		            
+		            fieldsObject.put("description", dataObject.isNull("description") ? null : dataObject.getString("description"));
+		            fieldsObject.put("id", dataObject.getString("id"));
+		            fieldsObject.put("name", dataObject.getString("name"));
+		            fieldsObject.put("administrator", dataObject.getBoolean("administrator"));
+
+		            JSONObject recordObject = new JSONObject();
+		            recordObject.put("fields", fieldsObject);
+		            recordsArray.put(recordObject);
+		            JSONObject outputObject = new JSONObject();
+			        outputObject.put("records", recordsArray);
+			        String resData = outputObject.toString();
+			        System.out.println(resData);
+			        POSTRequest("appfpkYiYDZtMWJhA", "tblhmlceroOgnh6Ed", "patJOGkmzGUONSJVC.1e139f03d8fc3789fa64c266896a4a32fd875c90d0c83e895e28e49a44ed89b7", resData);
+		        }
 	        
-			return resData;
+			return null;
 		} catch (IOException e) {
 			e.printStackTrace();
 			return "error: " +e.getMessage();
