@@ -1,0 +1,24 @@
+package hust.soict.sec.objectFb.user;
+
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Version;
+import com.restfb.types.User;
+
+public class AccessToken {
+	public String accessToken;
+	public FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.VERSION_12_0);
+	User user = fbClient.fetchObject("me", User.class);
+
+	public String getAccessToken() {
+		return accessToken;
+	
+
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
+
+
+
+}
+

@@ -1,0 +1,17 @@
+package test;
+import facebook.*;
+import facebook.user.User;
+import java.util.*;
+public class Test {
+
+	public static void main(String[] args) {
+//		User userFb = new User(User.getObjectId(), getListAttribute());
+		Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the Facebook access token: ");
+        String accessToken = scanner.nextLine();
+        GetData.setAccessToken(accessToken);
+		getData(User.getObjectId(), getListAttribute(),accessToken);
+		
+	}
+
+}

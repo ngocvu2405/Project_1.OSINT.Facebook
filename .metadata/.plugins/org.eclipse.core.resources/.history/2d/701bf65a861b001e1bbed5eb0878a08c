@@ -1,0 +1,31 @@
+package facebook.user;
+
+import facebook.GetData;
+
+public class User extends GetData{
+//	protected String objectId = new String("me?fields");
+//	protected String listAttribute = new String("id%2Cname");
+//	protected String accessToken;
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
+
+	protected User(String objectId, String listAttribute, String accessToken) {
+		super(objectId, listAttribute, accessToken);
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getObjectId() {
+		return objectId;
+	}
+
+	public String getListAttribute() {
+		return listAttribute;
+	}
+
+	public String getAccessToken() {
+		return accessToken;
+	}
+	
+
+}

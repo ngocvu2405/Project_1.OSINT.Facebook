@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+/**
+ * @author Acer
+ *
+ */
+module test_prj {
+	requires restfb;
+}

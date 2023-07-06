@@ -1,0 +1,30 @@
+package facebook.user;
+
+import java.io.IOException;
+
+import facebook.GetData;
+
+public class User extends GetData{
+
+//	curl -i -X GET \
+//	 "https://graph.facebook.com/v17.0/me?fields=id%2Cname&access_token=EAAT2W7fgLlwBAASGMaUhvDqB3a8BQ3MbiCBsWVZAALwI4o44HHOAvjGhI0H3tQMTSa89GR9BXjCtCPUJUfmDNr6GTKrKoLN73RCUm9QCGaECp40vDckB9zytTy10qTPfsTZAFRxrB7Qz2SRVbGqZCi92QFhq2pfppSKtrqLUL6UPq0BEdXt2ATXTUkpI71x8C2FIdIfFzDUpCHItgRu"
+//	setObjectId("me?fields");
+//	setListAttribute("id%2Cname");
+		
+
+	protected User(String objectId, String listAttribute) {
+		super("me?fields", "id%2Cname");
+		// TODO Auto-generated constructor stub
+	}
+	
+	public String getData(String objectId, String listAttribute, String accessToken) throws IOException{
+		return super.getData(objectId, listAttribute, accessToken);
+	}
+	
+//	try {
+//		String data = getData(objectId, listAttribute, accessToken);
+//	} catch (IOException e) {
+//		System.out.println("error: " + e.getMessage()); 
+//	    e.printStackTrace(); 
+//    }
+}

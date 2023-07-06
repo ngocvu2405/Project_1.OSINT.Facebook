@@ -1,0 +1,32 @@
+package hust.soict.sec.main;
+import java.util.*;
+
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Version;
+import com.restfb.types.User;
+
+import hust.soict.sec.objectFb.user.*;
+
+public class Main {
+	private static ArrayList<UserInfo> fullUser = new ArrayList<UserInfo>();
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Get the accessToken from keyboard
+		Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the Facebook access token: ");
+        String accessToken = scanner.nextLine();
+        AccessToken.setAccessToken(accessToken);
+        
+        //Get and add UserInfo
+    	FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.VERSION_12_0);
+    	User user = fbClient.fetchObject("me", User.class);
+    	
+        UserInfo userClient = new UserInfo(user.getId(), user.getName());
+        fullUser.add(userClient);
+        System.out.println(fullUser);
+	}
+
+}

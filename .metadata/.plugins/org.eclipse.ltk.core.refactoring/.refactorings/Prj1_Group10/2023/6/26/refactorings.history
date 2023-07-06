@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;airtable-main.py&apos; to &apos;JSONData&apos;" description="Move &apos;airtable-main.py&apos; to &apos;JSONData&apos;" destination="test_prj/JSONData" element1="test_prj/airtable-main.py" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1687693030145" updateReferences="true"/>
+</session>

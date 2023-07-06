@@ -1,0 +1,5 @@
+package hust.soict.sec.objectFb.user;
+
+public class UserInfo {
+
+}

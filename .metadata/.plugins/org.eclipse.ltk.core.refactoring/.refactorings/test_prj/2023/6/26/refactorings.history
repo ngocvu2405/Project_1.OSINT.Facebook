@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;hust.soict.sec.airtable&apos; to &apos;linhtinh/src&apos;&#x0D;&#x0A;- Original project: &apos;test_prj&apos;&#x0D;&#x0A;- Destination element: &apos;linhtinh/src&apos;&#x0D;&#x0A;- Original element: &apos;test_prj/src/hust.soict.sec.airtable&apos;" description="Copy package" destination="=linhtinh/src" element1="/src&lt;hust.soict.sec.airtable" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1687685382514" version="1.0"/>
+</session>
