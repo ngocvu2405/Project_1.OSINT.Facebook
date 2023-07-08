@@ -147,7 +147,8 @@ public class JsonFileToExcelConverter {
         // Count variables for chart data
         int adminTrueCount = 0;
         int adminFalseCount = 0;
-
+        int descriptionHaveCount =0;
+        int descriptionNotHaveCount =0;
         // Loop through each record in the array and count the number of groups with admin values 'true' and 'false'
         for (int i = 0; i < recordsArray2.length(); i++) {
             JSONObject record = recordsArray2.getJSONObject(i);
@@ -163,10 +164,15 @@ public class JsonFileToExcelConverter {
             } else {
                 adminFalseCount++;
             }
+            if (fields.has("description")) {
+                descriptionHaveCount++;
+            } else {
+                descriptionNotHaveCount++;
+            }
         }
 
-        // Create a bar chart
-        CategoryChart barChart = new CategoryChartBuilder()
+        // Create a bar chart of number groups of value of admin true and false
+        CategoryChart adminBarChart = new CategoryChartBuilder()
                 .width(690)
                 .height(860)
                 .title("Number of Groups by Admin Value")
@@ -176,26 +182,41 @@ public class JsonFileToExcelConverter {
                 .build();
         
         // Customize Chart
-        barChart.getStyler().setLegendPosition(LegendPosition.InsideNW);
+        adminBarChart.getStyler().setLegendPosition(LegendPosition.InsideNW);
 
-        CategorySeries series = barChart.addSeries("Groups", Arrays.asList("True", "False"), Arrays.asList(adminTrueCount, adminFalseCount));
+        adminBarChart.addSeries("Groups", Arrays.asList("True", "False"), Arrays.asList(adminTrueCount, adminFalseCount));
 
+        // Create a bar chart number groups has description and not
+        CategoryChart descriptionBarChart = new CategoryChartBuilder()
+                .width(690)
+                .height(860)
+                .title("Number of Groups by Description Value")
+                .xAxisTitle("Description Value")
+                .yAxisTitle("Number of Groups")
+                .theme(ChartTheme.XChart)
+                .build();
         
+        // Customize Chart
+        descriptionBarChart.getStyler().setLegendPosition(LegendPosition.InsideNW);
+
+        descriptionBarChart.addSeries("Groups", Arrays.asList("Have", "Not have"), Arrays.asList(descriptionHaveCount, descriptionNotHaveCount));
+
         // Create a pie chart
-        PieChart pieChart = new PieChartBuilder()
+        PieChart adminPieChart = new PieChartBuilder()
                 .width(800)
                 .height(600)
                 .title("Distribution of Groups by Admin Value")
                 .theme(ChartTheme.XChart)
                 .build();
 
-        pieChart.addSeries("True", adminTrueCount);
-        pieChart.addSeries("False", adminFalseCount);
+        adminPieChart.addSeries("True", adminTrueCount);
+        adminPieChart.addSeries("False", adminFalseCount);
 
         // Save the charts to PNG files
-        BitmapEncoder.saveBitmap(barChart, "bar_chart.png", BitmapEncoder.BitmapFormat.PNG);
-        BitmapEncoder.saveBitmap(pieChart, "pie_chart.png", BitmapEncoder.BitmapFormat.PNG);
-
+        BitmapEncoder.saveBitmap(adminBarChart, "adminBarChart.png", BitmapEncoder.BitmapFormat.PNG);
+        BitmapEncoder.saveBitmap(adminPieChart, "adminPieChart.png", BitmapEncoder.BitmapFormat.PNG);
+        BitmapEncoder.saveBitmap(descriptionBarChart, "descriptionBarChart.png", BitmapEncoder.BitmapFormat.PNG);
+        
         // Write the Excel file to disk
         FileOutputStream outputStream = new FileOutputStream(new File("Airtable Base Data.xlsx"));
         workbook.write(outputStream);
