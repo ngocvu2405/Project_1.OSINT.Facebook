@@ -5,22 +5,12 @@ import java.io.IOException;
 import facebook.GetData;
 
 public class User extends GetData{
-    public String objectId = new String("me?fields");
-    public String listAttribute = new String("id%2Cname");
+
+    public String order = new String("me?fields=id%2Cname&access_token=");
 		
-
-	public User(String objectId, String listAttribute) {
-		super(listAttribute, listAttribute);
-        this.objectId = objectId;
-        this.listAttribute = listAttribute;
-	}
-	
-	public String getObjectId() {
-		return objectId;
-	}
-
-	public String getListAttribute() {
-		return listAttribute;
+	public User(String order) {
+		super(order);
+		this.order = order;
 	}
 
 }

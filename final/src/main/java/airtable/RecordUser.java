@@ -12,32 +12,17 @@ public class RecordUser extends PostRequest {
 
 	@Override
 	public String reformatData() {
-		User userFb = new User("me?fields", "id%2Cname");
-		String objectId = userFb.objectId;
-        String listAttribute = userFb.listAttribute;
+		User userFb = new User("me?fields=id%2Cname&access_token=");
+
+        String order = userFb.order;
         
 		Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the Facebook access token: ");
         String accessToken = scanner.nextLine();
         User.setAccessToken(accessToken);
 		try {
-			String res = GetData.getData(objectId,listAttribute,accessToken);
+			String res = GetData.getData(accessToken, order);
 			System.out.println(res);
-//			JsonObject jsonObject = new JsonObject();
-//			jsonObject.addProperty("userId", res.split("\"id\":")[1].split(",")[0].replaceAll("\"", ""));
-//			jsonObject.addProperty("fullname", res.split("\"name\":")[1].replaceAll("[\\{|\\}\"|\\s]", ""));
-//
-//			JsonObject fields = new JsonObject();
-//			fields.add("userId", jsonObject.get("userId"));
-//			fields.add("fullname", jsonObject.get("fullname"));
-//
-//			JsonObject record = new JsonObject();
-//			record.add("fields", fields);
-//
-//			JsonObject result = new JsonObject();
-//			JsonArray records = new JsonArray();
-//			records.add(record);
-//			result.add("records", records);
 
 			JSONObject jsonObject = new JSONObject(res);
 
@@ -54,6 +39,7 @@ public class RecordUser extends PostRequest {
 	        String resData = newJsonObject.toString();
 			
 	        System.out.println(resData);
+	        POSTRequest("appfpkYiYDZtMWJhA", "tblexw8RrU1S7drHh", "patJOGkmzGUONSJVC.1e139f03d8fc3789fa64c266896a4a32fd875c90d0c83e895e28e49a44ed89b7", resData);
 	        
 			return resData;
 		} catch (IOException e) {
