@@ -37,7 +37,7 @@ public class GetRequest {
 		    JSONObject jsonObject = new JSONObject(response);
 		    fileWriter.write(jsonObject.toString());
 		} catch (IOException ex) {
-		    ex.printStackTrace();
+		//  ex.printStackTrace();
 		}
 
     }
