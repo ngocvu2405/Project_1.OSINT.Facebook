@@ -20,7 +20,7 @@ public class Test2 {
 			System.out.println("All the thing is done! Check data statistic result in the folder RESULT");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("All the thinng not done! Some errors");
 		}
 		
 	}
