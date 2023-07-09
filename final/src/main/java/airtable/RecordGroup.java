@@ -50,7 +50,7 @@ public class RecordGroup extends PostRequest {
 	        
 			return null;
 		} catch (IOException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			return "error: " +e.getMessage();
 		}
 	}
