@@ -33,17 +33,13 @@ public class GetRequest {
 	}
 	public static void toJsonFile(String response, String fileName) {
       
-		 try {
-	            JSONObject jsonObject = new JSONObject(response);
-//	            JSONArray recordsArray = jsonObject.getJSONArray("records");
+		try (FileWriter fileWriter = new FileWriter(fileName)) {
+		    JSONObject jsonObject = new JSONObject(response);
+		    fileWriter.write(jsonObject.toString());
+		} catch (IOException ex) {
+		    ex.printStackTrace();
+		}
 
-	            // Writing the JSON data to a file
-	            FileWriter fileWriter = new FileWriter(fileName);
-	            fileWriter.write(jsonObject.toString());
-	            fileWriter.close();
-	        } catch (IOException ex) {
-	            ex.printStackTrace();
-	        }
     }
 	
 }
