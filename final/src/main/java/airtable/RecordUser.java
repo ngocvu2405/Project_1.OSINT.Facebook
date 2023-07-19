@@ -3,8 +3,6 @@ package airtable;
 import java.io.IOException;
 import java.util.Scanner;
 import org.json.*;
-//import com.google.gson.JsonObject;
-//import com.google.gson.JsonArray;
 import facebook.GetData;
 import facebook.user.User;
 
@@ -17,9 +15,10 @@ public class RecordUser extends PostRequest {
         String order = userFb.order;
         
 		Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the Facebook access token: ");
+        System.out.print("Enter the Facebook access token to GET YOUR infomation: ");
         String accessToken = scanner.nextLine();
         User.setAccessToken(accessToken);
+        scanner.close();
 		try {
 			String res = GetData.getData(accessToken, order);
 			System.out.println(res);
@@ -42,12 +41,16 @@ public class RecordUser extends PostRequest {
 	        POSTRequest("appfpkYiYDZtMWJhA", "tblexw8RrU1S7drHh", "patJOGkmzGUONSJVC.1e139f03d8fc3789fa64c266896a4a32fd875c90d0c83e895e28e49a44ed89b7", resData);
 	        
 			return resData;
+		} catch (JSONException e) {
+		    // Handle JSONException
+		    return("Error: Required fields not found in the response.");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "error: " +e.getMessage();
-		}
-        
+		    // Handle IOException
+		    return("Error: An I/O error occurred.");
+		} catch (Exception e) {
+		    // Handle other exceptions
+		    return("Error: An unexpected error occurred.");
+		}        
 	}
 
 }

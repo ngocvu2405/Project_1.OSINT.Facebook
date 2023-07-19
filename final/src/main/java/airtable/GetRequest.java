@@ -1,10 +1,8 @@
 package airtable;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.file.Files;
 import java.util.Scanner;
 
 import org.json.*;
@@ -25,25 +23,30 @@ public class GetRequest {
 		InputStream responseStream = httpConn.getResponseCode() / 100 == 2
 				? httpConn.getInputStream()
 				: httpConn.getErrorStream();
-		Scanner s = new Scanner(responseStream).useDelimiter("\\A");
-		String response = s.hasNext() ? s.next() : "";
+		Scanner scanner = new Scanner(responseStream).useDelimiter("\\A");
+		String response = scanner.hasNext() ? scanner.next() : "";
 		System.out.println(response);
-		
+		scanner.close();
 		return response;
 	}
 	public static void toJsonFile(String response, String fileName) {
       
 		 try {
 	            JSONObject jsonObject = new JSONObject(response);
-//	            JSONArray recordsArray = jsonObject.getJSONArray("records");
-
 	            // Writing the JSON data to a file
 	            FileWriter fileWriter = new FileWriter(fileName);
 	            fileWriter.write(jsonObject.toString());
 	            fileWriter.close();
-	        } catch (IOException ex) {
-	            ex.printStackTrace();
-	        }
+	        } catch (JSONException e) {
+			    // Handle JSONException
+			    System.out.println("Error: Required fields not found in the response.");
+			} catch (IOException e) {
+			    // Handle IOException
+				System.out.println("Error: An I/O error occurred.");
+			} catch (Exception e) {
+			    // Handle other exceptions
+				System.out.println("Error: An unexpected error occurred.");
+			}
     }
 	
 }

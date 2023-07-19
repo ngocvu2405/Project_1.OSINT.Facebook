@@ -223,11 +223,4 @@ public class JsonFileToExcelConverter {
         workbook.close();
     }
 
-    public static void main(String[] args) {
-        try {
-            toExcel();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

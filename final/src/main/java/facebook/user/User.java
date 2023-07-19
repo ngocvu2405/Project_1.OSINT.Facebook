@@ -1,7 +1,5 @@
 package facebook.user;
 
-import java.io.IOException;
-
 import facebook.GetData;
 
 public class User extends GetData{

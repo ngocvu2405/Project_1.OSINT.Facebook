@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import facebook.GetData;
@@ -15,12 +16,11 @@ public class RecordGroup extends PostRequest {
 	public String reformatData() {
 		Group userGr = new Group("me?fields=groups%7Bid%2Cname%2Cdescription%2Cadministrator%7D&access_token=");
 		String order = userGr.order;
-
-        
 		Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the Facebook access token: ");
+        System.out.print("Enter the Facebook access token to get GROUP data: ");
         String accessToken = scanner.nextLine();
         Group.setAccessToken(accessToken);
+        scanner.close();
 		try {
 			String res = GetData.getData(accessToken, order);
 			System.out.println(res);
@@ -49,9 +49,15 @@ public class RecordGroup extends PostRequest {
 		        }
 	        
 			return null;
+		} catch (JSONException e) {
+		    // Handle JSONException
+		    return("Error: Required fields not found in the response.");
 		} catch (IOException e) {
-			e.printStackTrace();
-			return "error: " +e.getMessage();
+		    // Handle IOException
+		    return("Error: An I/O error occurred.");
+		} catch (Exception e) {
+		    // Handle other exceptions
+		    return("Error: An unexpected error occurred.");
 		}
 	}
 
