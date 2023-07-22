@@ -1,9 +1,11 @@
 package stat;
 
 import org.knowm.xchart.*;
-
+import org.knowm.xchart.style.PieStyler;
+import org.knowm.xchart.style.Styler;
 import org.knowm.xchart.style.Styler.ChartTheme;
 import org.knowm.xchart.style.Styler.LegendPosition;
+import org.knowm.xchart.style.colors.XChartSeriesColors;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,7 +16,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class JsonFileToExcelConverter {
 
@@ -208,19 +212,22 @@ public class JsonFileToExcelConverter {
         adminPieChart.addSeries("True", adminTrueCount);
         adminPieChart.addSeries("False", adminFalseCount);
 
-//        String path = "/final/src/RESULT";
-//        File file = new File(path);
-//        file.getParentFile().mkdirs();
         // Save the charts to PNG files
-        BitmapEncoder.saveBitmap(adminBarChart, "RESULT/adminBarChart.png", BitmapEncoder.BitmapFormat.PNG);
-        BitmapEncoder.saveBitmap(adminPieChart, "RESULT/adminPieChart.png", BitmapEncoder.BitmapFormat.PNG);
-        BitmapEncoder.saveBitmap(descriptionBarChart, "RESULT/descriptionBarChart.png", BitmapEncoder.BitmapFormat.PNG);
+        BitmapEncoder.saveBitmap(adminBarChart, "adminBarChart.png", BitmapEncoder.BitmapFormat.PNG);
+        BitmapEncoder.saveBitmap(adminPieChart, "adminPieChart.png", BitmapEncoder.BitmapFormat.PNG);
+        BitmapEncoder.saveBitmap(descriptionBarChart, "descriptionBarChart.png", BitmapEncoder.BitmapFormat.PNG);
         
         // Write the Excel file to disk
-        FileOutputStream outputStream = new FileOutputStream(new File("RESULT/Airtable_Base_Data.xlsx"));
-
+        FileOutputStream outputStream = new FileOutputStream(new File("Airtable Base Data.xlsx"));
         workbook.write(outputStream);
         workbook.close();
     }
 
+    public static void main(String[] args) {
+        try {
+            toExcel();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
