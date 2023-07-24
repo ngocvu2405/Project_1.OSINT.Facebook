@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.io.*;
 
 public abstract class PostRequest {
-	public abstract String reformatData();
+	public abstract String reformatData() throws IOException;
 	
 	public void POSTRequest(String baseId, String tableId, String airtableToken, String res) throws IOException {
 		URL url = new URL("https://api.airtable.com/v0/" + baseId + "/" + tableId);

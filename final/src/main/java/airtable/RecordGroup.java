@@ -1,6 +1,8 @@
 package airtable;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -14,10 +16,14 @@ import facebook.user.*;
 public class RecordGroup extends PostRequest {
 
 	@Override
-	public String reformatData() {
+	public String reformatData() throws IOException {
 		Group userGr = new Group("me?fields=groups%7Bid%2Cname%2Cdescription%2Cadministrator%7D&access_token=");
 		String order = userGr.order;
-
+		final String API_INFO = new String(Files.readAllBytes(Paths.get("src/main/java/airtable/validatedAPI.json")));
+	    JSONObject airtableObject = new JSONObject(API_INFO);
+	    final String TOKEN_AIRTABLE = airtableObject.getString("APIToken");
+	    final String BASE_AIRTABLE_ID = airtableObject.getString("baseID");
+	    final String TABLE_GROUP = airtableObject.getString("groupTable");
         
 		Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the Facebook GROUPS access token: ");
@@ -46,9 +52,9 @@ public class RecordGroup extends PostRequest {
 			        outputObject.put("records", recordsArray);
 			        String resData = outputObject.toString();
 			        System.out.println(resData);
-			        POSTRequest("appfpkYiYDZtMWJhA", "tblhmlceroOgnh6Ed", "patJOGkmzGUONSJVC.1e139f03d8fc3789fa64c266896a4a32fd875c90d0c83e895e28e49a44ed89b7", resData);
+			        POSTRequest(BASE_AIRTABLE_ID, TABLE_GROUP, TOKEN_AIRTABLE, resData);
 		        }
-	        
+	        System.out.println("\u001B[36m Crawling GROUP DATA is done! \u001B[0m");
 			return null;
 		} catch (JSONException e) {
 		    // Handle JSONException

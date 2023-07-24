@@ -1,10 +1,5 @@
 package stat;
 
-import org.knowm.xchart.*;
-
-import org.knowm.xchart.style.Styler.ChartTheme;
-import org.knowm.xchart.style.Styler.LegendPosition;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,12 +9,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 public class JsonFileToExcelConverter {
 
-    public static void toExcel() throws IOException {
-
+    public static void toExcel() {
+      try {
         // Read the JSON data from the file
         String jsonString = new String(Files.readAllBytes(Paths.get("user.json")));
 
@@ -57,7 +51,6 @@ public class JsonFileToExcelConverter {
         
         // Create a new sheet for Group
         String jsonString2 = new String(Files.readAllBytes(Paths.get("group.json")));
-        System.out.println(jsonString2);
         Sheet sheet2 = workbook.createSheet("Group");
 
         // Create a header row for the Excel sheet
@@ -140,87 +133,15 @@ public class JsonFileToExcelConverter {
             sheet.autoSizeColumn(i);
         }
         
-        // Count variables for chart data
-        int adminTrueCount = 0;
-        int adminFalseCount = 0;
-        int descriptionHaveCount =0;
-        int descriptionNotHaveCount =0;
-        // Loop through each record in the array and count the number of groups with admin values 'true' and 'false'
-        for (int i = 0; i < recordsArray2.length(); i++) {
-            JSONObject record = recordsArray2.getJSONObject(i);
-            JSONObject fields = record.getJSONObject("fields");
-            boolean administrator;
-            if (fields.has("administrator")) {
-                administrator = fields.getBoolean("administrator");
-            } else {
-                administrator = false;
-            }
-            if (administrator) {
-                adminTrueCount++;
-            } else {
-                adminFalseCount++;
-            }
-            if (fields.has("description")) {
-                descriptionHaveCount++;
-            } else {
-                descriptionNotHaveCount++;
-            }
-        }
-
-        // Create a bar chart of number groups of value of admin true and false
-        CategoryChart adminBarChart = new CategoryChartBuilder()
-                .width(690)
-                .height(860)
-                .title("Number of Groups by Admin Value")
-                .xAxisTitle("Admin Value")
-                .yAxisTitle("Number of Groups")
-                .theme(ChartTheme.XChart)
-                .build();
-        
-        // Customize Chart
-        adminBarChart.getStyler().setLegendPosition(LegendPosition.InsideNW);
-
-        adminBarChart.addSeries("Groups", Arrays.asList("True", "False"), Arrays.asList(adminTrueCount, adminFalseCount));
-
-        // Create a bar chart number groups has description and not
-        CategoryChart descriptionBarChart = new CategoryChartBuilder()
-                .width(690)
-                .height(860)
-                .title("Number of Groups by Description Value")
-                .xAxisTitle("Description Value")
-                .yAxisTitle("Number of Groups")
-                .theme(ChartTheme.XChart)
-                .build();
-        
-        // Customize Chart
-        descriptionBarChart.getStyler().setLegendPosition(LegendPosition.InsideNW);
-
-        descriptionBarChart.addSeries("Groups", Arrays.asList("Have", "Not have"), Arrays.asList(descriptionHaveCount, descriptionNotHaveCount));
-
-        // Create a pie chart
-        PieChart adminPieChart = new PieChartBuilder()
-                .width(800)
-                .height(600)
-                .title("Distribution of Groups by Admin Value")
-                .theme(ChartTheme.XChart)
-                .build();
-
-        adminPieChart.addSeries("True", adminTrueCount);
-        adminPieChart.addSeries("False", adminFalseCount);
-
-//        String path = "/final/src/RESULT";
-//        File file = new File(path);
-//        file.getParentFile().mkdirs();
-        // Save the charts to PNG files
-        BitmapEncoder.saveBitmap(adminBarChart, "RESULT/adminBarChart.png", BitmapEncoder.BitmapFormat.PNG);
-        BitmapEncoder.saveBitmap(adminPieChart, "RESULT/adminPieChart.png", BitmapEncoder.BitmapFormat.PNG);
-        BitmapEncoder.saveBitmap(descriptionBarChart, "RESULT/descriptionBarChart.png", BitmapEncoder.BitmapFormat.PNG);
-        
         // Write the Excel file to disk
         FileOutputStream outputStream = new FileOutputStream(new File("RESULT/Airtable_Base_Data.xlsx"));
 
         workbook.write(outputStream);
         workbook.close();
+      } 
+      catch(IOException e)
+      {
+          System.out.print("Cannot write to Excel");
+      }
     }
-
 }

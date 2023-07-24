@@ -34,7 +34,7 @@ public class GetRequest {
 		 try {
 	            JSONObject jsonObject = new JSONObject(response);
 	            // Writing the JSON data to a file
-	            FileWriter fileWriter = new FileWriter(fileName);
+	            FileWriter fileWriter = new FileWriter("ExportJson/" + fileName);
 	            fileWriter.write(jsonObject.toString());
 	            fileWriter.close();
 	        } catch (JSONException e) {

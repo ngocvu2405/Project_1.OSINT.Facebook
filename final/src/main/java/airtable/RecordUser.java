@@ -1,6 +1,8 @@
 package airtable;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import org.json.*;
@@ -10,11 +12,15 @@ import facebook.user.User;
 public class RecordUser extends PostRequest {
 
 	@Override
-	public String reformatData() {
+	public String reformatData() throws IOException {
 		User userFb = new User("me?fields=id%2Cname&access_token=");
 
         String order = userFb.order;
-        
+		final String API_INFO = new String(Files.readAllBytes(Paths.get("src/main/java/airtable/validatedAPI.json")));
+	    JSONObject airtableObject = new JSONObject(API_INFO);
+	    final String TOKEN_AIRTABLE = airtableObject.getString("APIToken");
+	    final String BASE_AIRTABLE_ID = airtableObject.getString("baseID");
+	    final String TABLE_USER = airtableObject.getString("userTable");
 		Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the Facebook access token to GET YOUR infomation: ");
         String accessToken = scanner.nextLine();
@@ -38,8 +44,9 @@ public class RecordUser extends PostRequest {
 	        String resData = newJsonObject.toString();
 			
 	        System.out.println(resData);
-	        POSTRequest("appfpkYiYDZtMWJhA", "tblexw8RrU1S7drHh", "patJOGkmzGUONSJVC.1e139f03d8fc3789fa64c266896a4a32fd875c90d0c83e895e28e49a44ed89b7", resData);
-	        
+	        POSTRequest(BASE_AIRTABLE_ID, TABLE_USER, TOKEN_AIRTABLE, resData);
+	        System.out.println("\u001B[36m Crawling USER DATA is done! \u001B[0m");
+
 			return resData;
 		} catch (JSONException e) {
 		    // Handle JSONException
