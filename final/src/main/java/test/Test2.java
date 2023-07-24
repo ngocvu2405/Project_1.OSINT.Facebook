@@ -127,6 +127,7 @@ public class Test2 {
             {
                 System.out.println(TEXT_YELLOW + "GOOD BYE!" + TEXT_RESET);
                 System.exit(0);
+                break;
             }
             else {
             	System.out.println(TEXT_RED + TEXT_BOLD+TEXT_UNDERLINE + "!!!WARNING: YOUR SYNTAX IS WRONG, PLEASE READ THE INSTRUCTION FOLLOWING!!!" +TEXT_RESET);
@@ -147,6 +148,7 @@ public class Test2 {
                 System.out.println(TEXT_YELLOW + "GOOD BYE!" + TEXT_RESET);
             	input.close();
                 System.exit(0);
+                break;
             }
        }
    }

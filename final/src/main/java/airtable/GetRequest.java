@@ -30,13 +30,12 @@ public class GetRequest {
 		return response;
 	}
 	public static void toJsonFile(String response, String fileName) {
-      
+		FileWriter fileWriter = null;
 		 try {
 	            JSONObject jsonObject = new JSONObject(response);
 	            // Writing the JSON data to a file
-	            FileWriter fileWriter = new FileWriter("ExportJson/" + fileName);
+	            fileWriter = new FileWriter("ExportJson/" + fileName);
 	            fileWriter.write(jsonObject.toString());
-	            fileWriter.close();
 	        } catch (JSONException e) {
 			    // Handle JSONException
 			    System.out.println("Error: Required fields not found in the response.");
@@ -46,7 +45,13 @@ public class GetRequest {
 			} catch (Exception e) {
 			    // Handle other exceptions
 				System.out.println("Error: An unexpected error occurred.");
-			}
+			} finally {
+				try {
+					fileWriter.close();
+				} catch (IOException e) {
+					System.out.println("Something wrong happen");
+				}
+			  }
     }
 	
 }
