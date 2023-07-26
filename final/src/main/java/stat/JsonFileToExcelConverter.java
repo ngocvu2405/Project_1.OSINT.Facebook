@@ -15,7 +15,7 @@ public class JsonFileToExcelConverter {
     public static void toExcel() {
       try {
         // Read the JSON data from the file
-        String jsonString = new String(Files.readAllBytes(Paths.get("user.json")));
+        String jsonString = new String(Files.readAllBytes(Paths.get("ExportJson/user.json")));
 
         // Create a new Excel workbook
         Workbook workbook = new XSSFWorkbook();
@@ -50,7 +50,7 @@ public class JsonFileToExcelConverter {
         
         
         // Create a new sheet for Group
-        String jsonString2 = new String(Files.readAllBytes(Paths.get("group.json")));
+        String jsonString2 = new String(Files.readAllBytes(Paths.get("ExportJson/group.json")));
         Sheet sheet2 = workbook.createSheet("Group");
 
         // Create a header row for the Excel sheet

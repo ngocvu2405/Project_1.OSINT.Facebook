@@ -29,6 +29,7 @@ public class RecordGroup extends PostRequest {
         System.out.print("Enter the Facebook GROUPS access token: ");
         String accessToken = scanner.nextLine();
         Group.setAccessToken(accessToken);
+//        scanner.close();
 		try {
 			String res = GetData.getData(accessToken, order);
         	JSONObject jsonObject = new JSONObject(res);

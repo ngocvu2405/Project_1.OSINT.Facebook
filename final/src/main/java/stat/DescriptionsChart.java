@@ -17,7 +17,7 @@ public class DescriptionsChart {
     public static void getDescriptionBarChart() {
       try {
         // Create a new sheet for Group
-        String jsonString2 = new String(Files.readAllBytes(Paths.get("group.json")));
+        String jsonString2 = new String(Files.readAllBytes(Paths.get("ExportJson/group.json")));
         
         JSONObject jsonObject2 = new JSONObject(jsonString2);
         JSONArray recordsArray2 = jsonObject2.getJSONArray("records");

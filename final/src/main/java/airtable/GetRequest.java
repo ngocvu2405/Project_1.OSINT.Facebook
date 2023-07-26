@@ -48,7 +48,7 @@ public class GetRequest {
 			} finally {
 				try {
 					fileWriter.close();
-				} catch (IOException e) {
+				} catch (Exception e) {
 					System.out.println("Something wrong happen");
 				}
 			  }
