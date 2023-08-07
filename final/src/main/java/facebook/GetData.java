@@ -36,7 +36,7 @@ public class GetData {
 				: httpConn.getErrorStream();
 		Scanner s = new Scanner(responseStream).useDelimiter("\\A");
 		String response = s.hasNext() ? s.next() : "";
-		System.out.println(response);
+//		System.out.println(response);
 		s.close();
 		return response;
 	}
